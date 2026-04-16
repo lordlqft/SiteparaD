@@ -3,7 +3,7 @@ function mostrarMensagem() {
     mensagem.innerText = "Eu gosto muito de você ❤️";
 }
 
-const dataInicio = new Date("2024-01-01T00:00:00");
+const dataInicio = new Date("2025-07-18T00:00:00");
 
 function atualizarTempo() {
     const agora = new Date();
