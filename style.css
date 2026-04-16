@@ -5,7 +5,7 @@ html {
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(180deg, #0f001a, #2b0033, #3b0000);
+    background: linear-gradient(180deg, #2b0033 0%, #3b003b 30%, #5a0000 100%);
     color: #f5e6ff;
     text-align: center;
     padding-top: 70px;
@@ -15,7 +15,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: linear-gradient(90deg, #2b0033, #5a0000);
+    background: #2b0033;
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -78,6 +78,6 @@ button:hover {
 
 footer {
     padding: 20px;
-    background: linear-gradient(90deg, #2b0033, #5a0000);
+    background: #2b0033;
     color: #ffd6f5;
 }
