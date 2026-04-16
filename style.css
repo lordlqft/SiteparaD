@@ -1,9 +1,35 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, #ffe6f0, #ffffff);
     color: #333;
     text-align: center;
+    padding-top: 70px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #ff4d88;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
 }
 
 .hero {
