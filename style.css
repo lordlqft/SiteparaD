@@ -1,5 +1,50 @@
 body {
-    font-family: Arial;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+    color: #333;
     text-align: center;
-    margin-top: 50px;
+}
+
+.hero {
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ff4d88;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e6005c;
+}
+
+.sobre,
+.galeria {
+    padding: 50px 20px;
+}
+
+.fotos {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.fotos img {
+    border-radius: 10px;
+    width: 200px;
+}
+
+footer {
+    padding: 20px;
+    background-color: #ffccdd;
 }
