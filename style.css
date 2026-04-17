@@ -54,9 +54,43 @@ body {
 }
 
 .galeria {
-  padding: 150px 20px;
+  padding: 150px 5%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.texto-lado {
+  width: 25%;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 15px;
+  line-height: 1.6;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.texto-lado h2 {
+  color: #ff8fdc;
+  margin-bottom: 10px;
+}
+
+.texto-lado p {
+  margin: 10px 0;
+}
+
+.texto-lado:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 0, 120, 0.4);
+}
+
+.left-text {
+  text-align: left;
+}
+
+.right-text {
+  text-align: right;
 }
 
 .honeycomb {
