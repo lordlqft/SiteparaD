@@ -5,9 +5,14 @@ html {
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, rgba(43,0,51,0.9), rgba(90,0,0,0.9)), url("images/bg.jpg");
-  background-size: cover;
-  background-attachment: fixed;
+  background: linear-gradient(
+    180deg,
+    #2b0033 0%,
+    #3b003b 25%,
+    #5a002a 50%,
+    #6b0015 75%,
+    #5a0000 100%
+  );
   color: white;
   text-align: center;
 }
