@@ -49,14 +49,14 @@ body {
 
 .honeycomb {
   position: relative;
-  width: 500px;
-  height: 600px;
+  width: 700px;
+  height: 750px;
 }
 
 .hex {
   position: absolute;
-  width: 160px;
-  height: 180px;
+  width: 220px;
+  height: 250px;
   clip-path: polygon(
     50% 0%,
     100% 25%,
@@ -76,20 +76,20 @@ body {
 }
 
 .hex:hover {
-  transform: scale(1.12) translateY(-10px);
+  transform: scale(1.12) translateY(-12px);
   filter: brightness(1.2);
-  box-shadow: 0 0 25px rgba(255, 0, 120, 0.7);
+  box-shadow: 0 0 30px rgba(255, 0, 120, 0.7);
   z-index: 10;
 }
 
 .h1 { top: 0; left: 0; }
-.h2 { top: 0; left: 170px; }
-.h3 { top: 0; left: 340px; }
+.h2 { top: 0; left: 240px; }
+.h3 { top: 0; left: 480px; }
 
-.h4 { top: 140px; left: 85px; }
-.h5 { top: 140px; left: 255px; }
+.h4 { top: 200px; left: 120px; }
+.h5 { top: 200px; left: 360px; }
 
-.h6 { top: 280px; left: 170px; }
+.h6 { top: 400px; left: 240px; }
 
 .extra {
   padding: 100px 20px;
