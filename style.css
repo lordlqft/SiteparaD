@@ -101,12 +101,12 @@ body {
   height: 100%;
   backface-visibility: hidden;
   border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .flip-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #ff8fdc;
   font-weight: bold;
   text-align: center;
@@ -118,16 +118,18 @@ body {
 .flip-back {
   transform: rotateY(180deg);
   padding: 20px;
+  background: rgba(0,0,0,0.25);
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  height: 100%;
   text-align: justify;
   font-size: 0.95em;
   line-height: 1.6;
-  background: rgba(0,0,0,0.25);
-  border-radius: 12px;
-  overflow-y: auto;
-}
-
-.flip-back p {
-  margin: 10px 0;
 }
 
 .hex {
