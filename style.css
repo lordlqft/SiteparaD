@@ -66,7 +66,7 @@ body {
     0% 25%
   );
   overflow: hidden;
-  transform-origin: center center;
+  transform-origin: center;
   transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -92,9 +92,30 @@ body {
 
 .h6 { top: 400px; left: 240px; }
 
-.extra {
-  padding: 100px 20px;
-  font-size: 1.5em;
+.infos {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 10%;
+  align-items: center;
+}
+
+.lado {
+  width: 25%;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.esquerdo {
+  text-align: left;
+}
+
+.direito {
+  text-align: right;
+}
+
+.datas {
+  width: 30%;
+  font-size: 1.2em;
 }
 
 footer {
