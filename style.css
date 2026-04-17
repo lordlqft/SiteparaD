@@ -57,44 +57,46 @@ body {
 .honeycomb {
   position: relative;
   width: 600px;
-  height: 500px;
+  height: 520px;
 }
 
-.hex {
+.pentagon {
   position: absolute;
   width: 150px;
-  height: 170px;
+  height: 150px;
   clip-path: polygon(
-    25% 6.7%, 75% 6.7%,
-    100% 50%, 75% 93.3%,
-    25% 93.3%, 0% 50%
+    50% 0%,
+    100% 38%,
+    82% 100%,
+    18% 100%,
+    0% 38%
   );
   overflow: hidden;
   transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
   animation: float 6s ease-in-out infinite;
 }
 
-.hex img {
+.pentagon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.hex:hover {
+.pentagon:hover {
   transform: scale(1.15) translateY(-10px);
   filter: brightness(1.2);
   box-shadow: 0 0 20px rgba(255, 0, 120, 0.6);
   z-index: 10;
 }
 
-.h1 { top: 0; left: 75px; animation-delay: 0s; }
-.h2 { top: 0; left: 225px; animation-delay: 1s; }
-.h3 { top: 0; left: 375px; animation-delay: 2s; }
+.p1 { top: 0; left: 75px; animation-delay: 0s; }
+.p2 { top: 0; left: 225px; animation-delay: 1s; }
+.p3 { top: 0; left: 375px; animation-delay: 2s; }
 
-.h4 { top: 120px; left: 150px; animation-delay: 1.5s; }
-.h5 { top: 120px; left: 300px; animation-delay: 2.5s; }
+.p4 { top: 140px; left: 150px; animation-delay: 1.5s; }
+.p5 { top: 140px; left: 300px; animation-delay: 2.5s; }
 
-.h6 { top: 240px; left: 225px; animation-delay: 3s; }
+.p6 { top: 280px; left: 225px; animation-delay: 3s; }
 
 @keyframes float {
   0% { transform: translateY(0px); }
