@@ -114,8 +114,37 @@ body {
 }
 
 .datas {
-  width: 30%;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.datas h2 {
+  font-size: 2em;
+}
+
+.card {
+  width: 100%;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.titulo {
   font-size: 1.2em;
+  color: #ffb3d9;
+}
+
+.tempo {
+  font-size: 1.3em;
+  font-weight: bold;
+  white-space: pre-line;
 }
 
 footer {
