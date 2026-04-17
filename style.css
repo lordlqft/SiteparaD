@@ -21,12 +21,19 @@ body {
   display: flex;
   justify-content: center;
   gap: 30px;
+  z-index: 1000;
 }
 
 .navbar a {
   color: #ffd6f5;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .hero {
@@ -42,41 +49,57 @@ body {
 }
 
 .galeria {
-  padding: 100px 20px;
-}
-
-.grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.row {
+  padding: 150px 20px;
   display: flex;
   justify-content: center;
-  gap: 30px;
 }
 
-.row.offset {
-  margin-top: -60px;
+.honeycomb {
+  position: relative;
+  width: 600px;
+  height: 500px;
 }
 
 .hex {
-  width: 180px;
-  height: 200px;
+  position: absolute;
+  width: 150px;
+  height: 170px;
   clip-path: polygon(
     25% 6.7%, 75% 6.7%,
     100% 50%, 75% 93.3%,
     25% 93.3%, 0% 50%
   );
   overflow: hidden;
+  transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+  animation: float 6s ease-in-out infinite;
 }
 
 .hex img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.hex:hover {
+  transform: scale(1.15) translateY(-10px);
+  filter: brightness(1.2);
+  box-shadow: 0 0 20px rgba(255, 0, 120, 0.6);
+  z-index: 10;
+}
+
+.h1 { top: 0; left: 75px; animation-delay: 0s; }
+.h2 { top: 0; left: 225px; animation-delay: 1s; }
+.h3 { top: 0; left: 375px; animation-delay: 2s; }
+
+.h4 { top: 120px; left: 150px; animation-delay: 1.5s; }
+.h5 { top: 120px; left: 300px; animation-delay: 2.5s; }
+
+.h6 { top: 240px; left: 225px; animation-delay: 3s; }
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
 }
 
 .extra {
@@ -87,4 +110,5 @@ body {
 footer {
   padding: 30px;
   background: #2b0033;
+  color: #ffd6f5;
 }
