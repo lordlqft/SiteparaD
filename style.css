@@ -21,18 +21,25 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #2b0033;
   padding: 15px;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  align-items: center;
+  gap: 15px;
   z-index: 1000;
+  transition: background 0.3s;
 }
 
 .navbar a {
   color: #ffd6f5;
   text-decoration: none;
   font-weight: bold;
+}
+
+.divider {
+  width: 2px;
+  height: 20px;
+  background: rgba(255,255,255,0.3);
 }
 
 .hero {
@@ -110,13 +117,8 @@ body {
   line-height: 1.6;
 }
 
-.esquerdo {
-  text-align: left;
-}
-
-.direito {
-  text-align: right;
-}
+.esquerdo { text-align: left; }
+.direito { text-align: right; }
 
 .datas {
   width: 35%;
@@ -126,33 +128,18 @@ body {
   gap: 20px;
 }
 
-.datas h2 {
-  font-size: 2em;
-}
-
 .card {
   width: 100%;
   padding: 20px;
   border-radius: 15px;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.titulo {
-  font-size: 1.2em;
-  color: #ffb3d9;
 }
 
 .tempo {
-  font-size: 1.3em;
-  font-weight: bold;
   white-space: pre-line;
 }
 
 footer {
   padding: 30px;
-  background: #5a0000;
 }
