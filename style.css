@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -43,14 +47,24 @@ body {
 
 .grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.row {
+  display: flex;
   justify-content: center;
   gap: 30px;
 }
 
+.row.offset {
+  margin-top: -60px;
+}
+
 .hex {
-  width: 200px;
-  height: 220px;
+  width: 180px;
+  height: 200px;
   clip-path: polygon(
     25% 6.7%, 75% 6.7%,
     100% 50%, 75% 93.3%,
