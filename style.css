@@ -120,18 +120,38 @@ body {
 .flip-card {
   position: absolute;
   width: 220px;
-  height: 750px;
+  height: 250px;
   perspective: 1000px;
 }
 
-.left-card {
+.left-card1 {
   left: 5%;
   top: 0;
 }
 
-.right-card {
+.left-card2 {
+  left: 5%;
+  top: 255px;
+}
+
+.left-card3 {
+  left: 5%;
+  top: 510px;
+}
+
+.right-card1 {
   right: 5%;
   top: 0;
+}
+
+.right-card2 {
+  right: 5%;
+  top: 255px;
+}
+
+.right-card3 {
+  right: 5%;
+  top: 510px;
 }
 
 .flip-inner {
