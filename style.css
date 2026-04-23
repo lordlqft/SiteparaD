@@ -29,8 +29,12 @@ body {
   padding: 15px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 15px;
   z-index: 1000;
+  background: rgba(30, 0, 30, 0.55);
+  backdrop-filter: blur(10px);
 }
 
 .navbar a {
@@ -56,7 +60,6 @@ body {
   font-size: 4em;
   font-family: 'Evil Of Frankenstein', sans-serif;
   display: inline-flex;
-
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.08em;
@@ -100,6 +103,8 @@ body {
   }
 }
 
+/* ─── Galeria de momentos ──────────────────────────────────────────────────── */
+
 .galeria {
   position: relative;
   padding: 150px 0;
@@ -118,12 +123,7 @@ body {
   position: absolute;
   width: 220px;
   height: 250px;
-  clip-path: polygon(50% 0%,
-      100% 25%,
-      100% 75%,
-      50% 100%,
-      0% 75%,
-      0% 25%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   overflow: hidden;
   transition: transform 0.3s ease;
 }
@@ -167,6 +167,8 @@ body {
   top: 400px;
   left: 240px;
 }
+
+/* ─── Flip cards ───────────────────────────────────────────────────────────── */
 
 .flip-card {
   position: absolute;
@@ -269,6 +271,8 @@ body {
   display: block;
 }
 
+/* ─── Máquina do tempo ─────────────────────────────────────────────────────── */
+
 .infos {
   display: flex;
   justify-content: space-between;
@@ -347,9 +351,7 @@ body {
   padding: 2px 0;
 }
 
-footer {
-  padding: 30px;
-}
+/* ─── Carta & Motivos ──────────────────────────────────────────────────────── */
 
 .motivos-section {
   padding: 80px 10%;
@@ -380,4 +382,222 @@ footer {
   line-height: 1.6;
   font-size: 1em;
   margin-top: 20px;
+}
+
+/* ─── Seção Memórias ───────────────────────────────────────────────────────── */
+
+.memorias-section {
+  padding: 80px 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.memorias-subtitulo {
+  color: #ffc2ee;
+  font-size: 1em;
+  margin-top: -10px;
+  margin-bottom: 36px;
+  opacity: 0.75;
+  font-family: cursive;
+}
+
+.memorias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+/* Item da galeria */
+.memoria-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.memoria-item img,
+.memoria-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.memoria-item:hover img,
+.memoria-item:hover video {
+  transform: scale(1.06);
+  filter: brightness(1.1);
+}
+
+/* Overlay rosado ao hover */
+.memoria-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 100, 180, 0.12);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+.memoria-item:hover::after {
+  opacity: 1;
+}
+
+/* Ícone de play para vídeos */
+.play-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 1.1em;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Lightbox ─────────────────────────────────────────────────────────────── */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(10, 0, 15, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(12px);
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(255, 80, 160, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.lightbox-content img {
+  max-width: 90vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+
+.lightbox-content video {
+  max-width: 90vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  outline: none;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  font-size: 1.3em;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 80, 160, 0.35);
+  transform: scale(1.1);
+}
+
+/* ─── Footer ───────────────────────────────────────────────────────────────── */
+
+footer {
+  padding: 30px;
+}
+
+/* ─── Responsivo ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .galeria {
+    flex-direction: column;
+    padding: 80px 20px;
+    gap: 20px;
+  }
+
+  .flip-card {
+    position: static;
+    width: 100%;
+    height: auto;
+    min-height: 120px;
+  }
+
+  .honeycomb {
+    width: 100%;
+    height: auto;
+  }
+
+  .infos {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .lado,
+  .datas {
+    width: 100%;
+  }
+
+  .memorias-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 6px;
+  }
+}
+
+@media (max-width: 500px) {
+  .memorias-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .navbar {
+    gap: 8px;
+    font-size: 0.8em;
+  }
 }
