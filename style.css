@@ -220,6 +220,13 @@ body {
 .titulo {
   color: #ff8fdc;
   display: block;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 5px 10px;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 .titulo-maquina {
@@ -236,6 +243,14 @@ body {
 
 .tempo {
   white-space: pre-line;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9em;
+  line-height: 1.4;
 }
 
 footer {
