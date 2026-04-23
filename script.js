@@ -11,20 +11,20 @@ function calcularTempo(dataInicial) {
   const minutos = Math.floor((totalSegundos % (60 * 60)) / 60);
   const segundos = totalSegundos % 60;
 
-  return meses + " meses\n" +
-         semanas + " semanas\n" +
-         dias + " dias\n" +
-         horas + " horas\n" +
-         minutos + " minutos\n" +
-         segundos + " segundos";
+  return `<div class="time-item"><span>Meses:</span> <span>${meses}</span></div>` +
+    `<div class="time-item"><span>Semanas:</span> <span>${semanas}</span></div>` +
+    `<div class="time-item"><span>Dias:</span> <span>${dias}</span></div>` +
+    `<div class="time-item"><span>Horas:</span> <span>${horas}</span></div>` +
+    `<div class="time-item"><span>Minutos:</span> <span>${minutos}</span></div>` +
+    `<div class="time-item"><span>Segundos:</span> <span>${segundos}</span></div>`;
 }
 
 const primeiraVista = new Date("2024-08-14T00:00:00");
 const namoro = new Date("2025-07-18T00:00:00");
 
 function atualizar() {
-  document.getElementById("data1").innerText = calcularTempo(primeiraVista);
-  document.getElementById("data2").innerText = calcularTempo(namoro);
+  document.getElementById("data1").innerHTML = calcularTempo(primeiraVista);
+  document.getElementById("data2").innerHTML = calcularTempo(namoro);
 }
 
 setInterval(atualizar, 1000);
