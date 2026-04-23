@@ -30,6 +30,15 @@ function atualizar() {
 setInterval(atualizar, 1000);
 atualizar();
 
+const heroTitle = document.querySelector('.hero h1');
+if (heroTitle) {
+  heroTitle.innerHTML = heroTitle.textContent.split('').map(char => {
+    return char === ' '
+      ? '<span class="titulo-letra">&nbsp;</span>'
+      : `<span class="titulo-letra">${char}</span>`;
+  }).join('');
+}
+
 // Flip card functionality for mobile
 document.querySelectorAll('.flip-card').forEach(card => {
   card.addEventListener('click', () => {
