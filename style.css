@@ -5,14 +5,12 @@ html {
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(
-    180deg,
-    #2b0033 0%,
-    #3b003b 25%,
-    #5a002a 50%,
-    #6b0015 75%,
-    #5a0000 100%
-  );
+  background: linear-gradient(180deg,
+      #2b0033 0%,
+      #3b003b 25%,
+      #5a002a 50%,
+      #6b0015 75%,
+      #5a0000 100%);
   color: white;
   text-align: center;
 }
@@ -37,7 +35,7 @@ body {
 .divider {
   width: 2px;
   height: 20px;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .hero {
@@ -110,15 +108,15 @@ body {
   color: #ff8fdc;
   font-weight: bold;
   text-align: center;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(6px);
 }
 
 .flip-back {
   transform: rotateY(180deg);
   padding: 20px;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 .texto {
@@ -136,15 +134,14 @@ body {
   position: absolute;
   width: 220px;
   height: 250px;
-  clip-path: polygon(
-    50% 0%,
-    100% 25%,
-    100% 75%,
-    50% 100%,
-    0% 75%,
-    0% 25%
-  );
+  clip-path: polygon(50% 0%,
+      100% 25%,
+      100% 75%,
+      50% 100%,
+      0% 75%,
+      0% 25%);
   overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
 .hex img {
@@ -153,12 +150,39 @@ body {
   object-fit: cover;
 }
 
-.h1 { top: 0; left: 0; }
-.h2 { top: 0; left: 240px; }
-.h3 { top: 0; left: 480px; }
-.h4 { top: 200px; left: 120px; }
-.h5 { top: 200px; left: 360px; }
-.h6 { top: 400px; left: 240px; }
+.hex:hover {
+  transform: scale(1.1);
+}
+
+.h1 {
+  top: 0;
+  left: 0;
+}
+
+.h2 {
+  top: 0;
+  left: 240px;
+}
+
+.h3 {
+  top: 0;
+  left: 480px;
+}
+
+.h4 {
+  top: 200px;
+  left: 120px;
+}
+
+.h5 {
+  top: 200px;
+  left: 360px;
+}
+
+.h6 {
+  top: 400px;
+  left: 240px;
+}
 
 .infos {
   display: flex;
@@ -168,8 +192,8 @@ body {
 }
 
 .caixa {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(6px);
   border-radius: 12px;
   padding: 20px;
