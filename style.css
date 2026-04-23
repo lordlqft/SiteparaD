@@ -120,7 +120,7 @@ body {
 .flip-card {
   position: absolute;
   width: 220px;
-  height: 250px;
+  height: 280px;
   perspective: 1000px;
 }
 
@@ -131,12 +131,12 @@ body {
 
 .left-card2 {
   left: 5%;
-  top: 255px;
+  top: 290px;
 }
 
 .left-card3 {
   left: 5%;
-  top: 510px;
+  top: 580px;
 }
 
 .right-card1 {
@@ -146,12 +146,12 @@ body {
 
 .right-card2 {
   right: 5%;
-  top: 255px;
+  top: 290px;
 }
 
 .right-card3 {
   right: 5%;
-  top: 510px;
+  top: 580px;
 }
 
 .flip-inner {
@@ -204,7 +204,7 @@ body {
   gap: 15px;
   height: 100%;
   text-align: justify;
-  font-size: 0.95em;
+  font-size: 0.85em;
   line-height: 1.6;
 }
 
