@@ -1,5 +1,12 @@
 html {
   scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 body {
@@ -174,6 +181,7 @@ body {
   height: 100%;
   backface-visibility: hidden;
   border-radius: 12px;
+  box-sizing: border-box;
 }
 
 .flip-front {
@@ -195,6 +203,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(6px);
   border-radius: 12px;
+  overflow: hidden;
 }
 
 .texto {
