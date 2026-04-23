@@ -56,6 +56,7 @@ body {
   font-size: 4em;
   font-family: 'Evil Of Frankenstein', sans-serif;
   display: inline-flex;
+
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.08em;
