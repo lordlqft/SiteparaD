@@ -40,6 +40,7 @@ function createHeart() {
   const size = Math.random() * 16 + 16;
   heart.style.fontSize = `${size}px`;
   heart.style.left = `${Math.random() * 100}%`;
+  heart.style.top = `${Math.random() * 100}%`;
   heart.style.animationDuration = `${Math.random() * 2 + 5}s`;
   heart.style.opacity = '0';
   heartContainer.appendChild(heart);
