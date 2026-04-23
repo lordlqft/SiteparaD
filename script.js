@@ -20,7 +20,7 @@ function calcularTempo(dataInicial) {
 }
 
 const primeiraVista = new Date("2024-08-14T00:00:00");
-const namoro = new Date("2025-07-18T00:00:00");
+const namoro = new Date("2025-06-18T00:00:00");
 
 function atualizar() {
   document.getElementById("data1").innerHTML = calcularTempo(primeiraVista);
