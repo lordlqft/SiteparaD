@@ -54,7 +54,49 @@ body {
 
 .hero h1 {
   font-size: 4em;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Evil Of Frankenstein', sans-serif;
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.08em;
+}
+
+.hero h1 span {
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.2s ease;
+}
+
+.hero h1 span:hover {
+  animation: wobble 0.5s ease;
+  color: #ffb7e3;
+}
+
+@keyframes wobble {
+
+  0%,
+  100% {
+    transform: rotate(0deg) skew(0deg);
+  }
+
+  15% {
+    transform: rotate(-12deg) skew(-6deg);
+  }
+
+  30% {
+    transform: rotate(10deg) skew(6deg);
+  }
+
+  45% {
+    transform: rotate(-7deg) skew(-4deg);
+  }
+
+  60% {
+    transform: rotate(5deg) skew(3deg);
+  }
+
+  75% {
+    transform: rotate(-3deg) skew(-2deg);
+  }
 }
 
 .galeria {
