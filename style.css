@@ -267,3 +267,16 @@ body {
 footer {
   padding: 30px;
 }
+
+.carta-section {
+  padding: 80px 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.carta-texto {
+  text-align: justify;
+  line-height: 1.6;
+  font-size: 1em;
+  margin-top: 20px;
+}
