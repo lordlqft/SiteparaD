@@ -232,7 +232,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 8px;
   color: #ff8fdc;
   font-weight: bold;
   text-align: center;
@@ -243,7 +243,7 @@ body {
 
 .flip-back {
   transform: rotateY(180deg);
-  padding: 12px;
+  padding: 8px;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(6px);
@@ -255,16 +255,19 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
   height: 100%;
   text-align: justify;
-  font-size: 0.9em;
-  line-height: 1.6;
-  padding: 8px;
+  font-size: 1.02em;
+  line-height: 1.45;
+  padding: 4px;
 }
 
 .texto p {
   margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .infos {
