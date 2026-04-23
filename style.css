@@ -9,13 +9,6 @@ html {
   box-sizing: inherit;
 }
 
-@font-face {
-  font-family: 'HorizonLocal';
-  src: url('fonts/Horizon.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -284,7 +277,7 @@ body {
 }
 
 .hero h1 {
-  font-family: 'HorizonLocal', sans-serif;
+  font-family: 'Horizon', sans-serif;
 }
 
 .tempo {
