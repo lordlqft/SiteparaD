@@ -30,29 +30,6 @@ function atualizar() {
 setInterval(atualizar, 1000);
 atualizar();
 
-// Floating hearts animation
-const heartContainer = document.querySelector('.heart-container');
-
-function createHeart() {
-  const heart = document.createElement('span');
-  heart.className = 'heart';
-  heart.textContent = '❤️';
-  const size = Math.random() * 16 + 16;
-  heart.style.fontSize = `${size}px`;
-  heart.style.left = `${Math.random() * 100}%`;
-  heart.style.top = `${Math.random() * 100}%`;
-  heart.style.animationDuration = `${Math.random() * 2 + 5}s`;
-  heart.style.opacity = '0';
-  heartContainer.appendChild(heart);
-
-  heart.addEventListener('animationend', () => {
-    heart.remove();
-  });
-}
-
-setInterval(createHeart, 500);
-createHeart();
-
 // Flip card functionality for mobile
 document.querySelectorAll('.flip-card').forEach(card => {
   card.addEventListener('click', () => {
