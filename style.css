@@ -243,7 +243,7 @@ body {
 
 .flip-back {
   transform: rotateY(180deg);
-  padding: 8px;
+  padding: 0;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(6px);
@@ -254,20 +254,18 @@ body {
 .texto {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 6px;
+  justify-content: flex-start;
+  gap: 8px;
   height: 100%;
   text-align: justify;
   font-size: 1.02em;
   line-height: 1.45;
-  padding: 4px;
+  padding: 12px;
 }
 
 .texto p {
   margin: 0;
-  flex: 1;
-  display: flex;
-  align-items: center;
+  display: block;
 }
 
 .infos {
