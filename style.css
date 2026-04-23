@@ -49,6 +49,39 @@ body {
   font-size: 4em;
 }
 
+.heart-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 500;
+}
+
+.heart {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0;
+  animation: floatHeart 6s ease-in forwards;
+  color: rgba(255, 214, 245, 0.9);
+  text-shadow: 0 0 15px rgba(255, 214, 245, 0.5);
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-120vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
 .galeria {
   position: relative;
   padding: 150px 0;
