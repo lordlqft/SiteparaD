@@ -254,13 +254,14 @@ body {
 .texto {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 8px;
   height: 100%;
   text-align: justify;
-  font-size: 1.02em;
-  line-height: 1.45;
-  padding: 12px;
+  font-size: 1.15em;
+  font-family: cursive;
+  line-height: 1.4;
+  padding: 14px;
 }
 
 .texto p {
