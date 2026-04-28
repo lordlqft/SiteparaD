@@ -1,4 +1,4 @@
-// ─── Contador de tempo ───────────────────────────────────────────────────────
+// ─── Contador de tempo (CORRIGIDO) ─────────────────────────────────────────
 
 function calcularTempo(dataInicial) {
   const agora = new Date();
@@ -35,18 +35,20 @@ function atualizar() {
 setInterval(atualizar, 1000);
 atualizar();
 
-// ─── Hero title wobble ────────────────────────────────────────────────────────
+
+// ─── Hero title wobble ─────────────────────────────────────────────────────
 
 const heroTitle = document.querySelector('.hero h1');
 if (heroTitle) {
   heroTitle.innerHTML = heroTitle.textContent.split('').map(char => {
     return char === ' '
-      ? '<span class="titulo-letra">&nbsp;</span>'
-      : `<span class="titulo-letra">${char}</span>`;
+      ? '<span>&nbsp;</span>'
+      : `<span>${char}</span>`;
   }).join('');
 }
 
-// ─── Flip card (mobile) ───────────────────────────────────────────────────────
+
+// ─── Flip card ─────────────────────────────────────────────────────────────
 
 document.querySelectorAll('.flip-card').forEach(card => {
   card.addEventListener('click', () => {
@@ -54,10 +56,9 @@ document.querySelectorAll('.flip-card').forEach(card => {
   });
 });
 
-// ─── Galeria de Memórias ──────────────────────────────────────────────────────
 
-// Lista de mídias: coloque aqui os arquivos quando tiver.
-// type: 'photo' ou 'video'
+// ─── Galeria de Memórias ───────────────────────────────────────────────────
+
 const medias = [
   { type: 'photo', src: 'images/mem_photo1.jpg' },
   { type: 'photo', src: 'images/mem_photo2.jpg' },
@@ -81,7 +82,6 @@ const medias = [
   { type: 'video', src: 'videos/mem_video10.mp4' },
 ];
 
-// Fisher-Yates shuffle
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -92,46 +92,47 @@ function shuffle(arr) {
 }
 
 const grid = document.getElementById('memoriasGrid');
-const shuffled = shuffle(medias);
 
-shuffled.forEach((item, index) => {
-  const cell = document.createElement('div');
-  cell.className = 'memoria-item';
-  cell.dataset.index = index;
+if (grid) {
+  const shuffled = shuffle(medias);
 
-  if (item.type === 'photo') {
-    const img = document.createElement('img');
-    img.src = item.src;
-    img.alt = 'Memória';
-    img.loading = 'lazy';
-    cell.appendChild(img);
-  } else {
-    const video = document.createElement('video');
-    video.src = item.src;
-    video.muted = true;
-    video.loop = true;
-    video.playsInline = true;
-    video.preload = 'metadata';
+  shuffled.forEach(item => {
+    const cell = document.createElement('div');
+    cell.className = 'memoria-item';
 
-    // play on hover (desktop)
-    cell.addEventListener('mouseenter', () => video.play());
-    cell.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+    if (item.type === 'photo') {
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.alt = 'Memória';
+      img.loading = 'lazy';
+      cell.appendChild(img);
+    } else {
+      const video = document.createElement('video');
+      video.src = item.src;
+      video.muted = true;
+      video.loop = true;
 
-    // ícone de play
-    const playIcon = document.createElement('div');
-    playIcon.className = 'play-icon';
-    playIcon.innerHTML = '▶';
+      cell.addEventListener('mouseenter', () => video.play());
+      cell.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
 
-    cell.appendChild(video);
-    cell.appendChild(playIcon);
-  }
+      const playIcon = document.createElement('div');
+      playIcon.className = 'play-icon';
+      playIcon.innerHTML = '▶';
 
-  // Armazena referência para lightbox
-  cell.addEventListener('click', () => openLightbox(item));
-  grid.appendChild(cell);
-});
+      cell.appendChild(video);
+      cell.appendChild(playIcon);
+    }
 
-// ─── Lightbox ─────────────────────────────────────────────────────────────────
+    cell.addEventListener('click', () => openLightbox(item));
+    grid.appendChild(cell);
+  });
+}
+
+
+// ─── Lightbox ──────────────────────────────────────────────────────────────
 
 const lightbox = document.getElementById('lightbox');
 const lightboxContent = document.getElementById('lightboxContent');
@@ -143,14 +144,12 @@ function openLightbox(item) {
   if (item.type === 'photo') {
     const img = document.createElement('img');
     img.src = item.src;
-    img.alt = 'Memória';
     lightboxContent.appendChild(img);
   } else {
     const video = document.createElement('video');
     video.src = item.src;
     video.controls = true;
     video.autoplay = true;
-    video.playsInline = true;
     lightboxContent.appendChild(video);
   }
 
@@ -161,26 +160,32 @@ function openLightbox(item) {
 function closeLightbox() {
   lightbox.classList.remove('active');
   document.body.style.overflow = '';
-  // Para o vídeo ao fechar
+
   const video = lightboxContent.querySelector('video');
   if (video) video.pause();
-  setTimeout(() => { lightboxContent.innerHTML = ''; }, 300);
+
+  setTimeout(() => {
+    lightboxContent.innerHTML = '';
+  }, 300);
 }
 
 lightboxClose.addEventListener('click', closeLightbox);
 
-// Fecha clicando fora do conteúdo
 lightbox.addEventListener('click', (e) => {
   if (e.target === lightbox) closeLightbox();
 });
 
-// Fecha com ESC
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
 });
 
 
-// ─── Fade-in no scroll ───────────────────────────────────────────────────────
+// ─── Fade-in + Parallax ─────────────────────────────────────────────────────
+
+window.addEventListener("scroll", () => {
+  const scroll = window.scrollY;
+  document.body.style.backgroundPosition = `center ${scroll * 0.3}px`;
+});
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -193,4 +198,21 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('section').forEach(sec => {
   sec.classList.add('fade-in');
   observer.observe(sec);
+});
+
+
+// ─── Efeito magnético ──────────────────────────────────────────────────────
+
+document.querySelectorAll('.flip-card, .hex').forEach(el => {
+  el.addEventListener('mousemove', (e) => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    el.style.transform = `rotateY(${x * 0.05}deg) rotateX(${y * -0.05}deg) scale(1.05)`;
+  });
+
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = '';
+  });
 });
