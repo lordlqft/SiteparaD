@@ -216,56 +216,10 @@ document.querySelectorAll('section').forEach(sec => {
   observer.observe(sec);
 });
 
-
-// ─── Parallax leve ─────────────────────
+const parallax = document.querySelector('.parallax-bg');
 
 window.addEventListener('scroll', () => {
-  document.body.style.backgroundPositionY = window.scrollY * 0.3 + 'px';
-});
-
-
-// ─── Partículas seguindo o mouse ─────────────────────
-
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-
-let particles = [];
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-
-window.addEventListener('mousemove', e => {
-  for (let i = 0; i < 3; i++) {
-    particles.push({
-      x: e.clientX,
-      y: e.clientY,
-      size: Math.random() * 3 + 1,
-      life: 50
-    });
+  if (parallax) {
+    parallax.style.transform = `translateY(${window.scrollY * 0.2}px)`;
   }
 });
-
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  particles.forEach((p, i) => {
-    p.life--;
-    p.y -= 0.5;
-
-    ctx.fillStyle = `rgba(255,150,200,${p.life / 50})`;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    ctx.fill();
-
-    if (p.life <= 0) particles.splice(i, 1);
-  });
-
-  requestAnimationFrame(animateParticles);
-}
-
-animateParticles();

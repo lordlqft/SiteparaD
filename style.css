@@ -639,6 +639,18 @@ body {
 
 /* ─── Parallax ───────────────────────── */
 
+.parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('images/image7.png') center/cover no-repeat;
+  opacity: 0.08;
+  z-index: -1;
+  transform: translateY(0);
+}
+
 body {
   background-attachment: fixed;
 }
@@ -671,14 +683,6 @@ body {
   transition: 0.3s;
 }
 
-/* ─── Particles canvas ───────────────────────── */
-
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+body {
+  cursor: url('images/arrow.png'), auto;
 }
