@@ -23,19 +23,22 @@
         <a href="#carta">Carta Aberta</a>
         <span class="divider"></span>
         <a href="#motivos">Por que eu te amo</a>
+        <span class="divider"></span>
+        <a href="#memorias">Memórias</a>
     </nav>
 
-    <section id="inicio" class="hero fade-in">
+    <section id="inicio" class="hero">
         <h1>Duda's present</h1>
         <p>Feito especialmente pra você</p>
     </section>
 
-    <section id="galeria" class="galeria fade-in">
+    <section id="galeria" class="galeria">
 
-        <!-- LEFT CARDS -->
         <div class="flip-card left-card1">
             <div class="flip-inner">
-                <div class="flip-front"><span>Passe o mouse aqui!</span></div>
+                <div class="flip-front">
+                    <span>Passe o mouse aqui!</span>
+                </div>
                 <div class="flip-back">
                     <div class="texto">
                         <p>Não foi algo planejado, nem algo que eu estava procurando.</p>
@@ -46,7 +49,9 @@
 
         <div class="flip-card left-card2">
             <div class="flip-inner">
-                <div class="flip-front"><span>Passe o mouse aqui!</span></div>
+                <div class="flip-front">
+                    <span>Passe o mouse aqui!</span>
+                </div>
                 <div class="flip-back">
                     <div class="texto">
                         <p>Mas de alguma forma, tudo começou a fazer sentido quando você apareceu.</p>
@@ -57,7 +62,9 @@
 
         <div class="flip-card left-card3">
             <div class="flip-inner">
-                <div class="flip-front"><span>Passe o mouse aqui!</span></div>
+                <div class="flip-front">
+                    <span>Passe o mouse aqui!</span>
+                </div>
                 <div class="flip-back">
                     <div class="texto">
                         <p>Os dias ficaram mais leves, as coisas mais simples… e eu comecei a gostar disso.</p>
@@ -66,7 +73,6 @@
             </div>
         </div>
 
-        <!-- HONEYCOMB -->
         <div class="honeycomb">
             <div class="hex h1"><img src="images/image1.png"></div>
             <div class="hex h2"><img src="images/image2.png"></div>
@@ -76,10 +82,11 @@
             <div class="hex h6"><img src="images/image6.png"></div>
         </div>
 
-        <!-- RIGHT CARDS -->
         <div class="flip-card right-card1">
             <div class="flip-inner">
-                <div class="flip-front"><span>Passe o mouse aqui!</span></div>
+                <div class="flip-front">
+                    <span>Passe o mouse aqui!</span>
+                </div>
                 <div class="flip-back">
                     <div class="texto">
                         <p>Você trouxe um tipo de tranquilidade que eu nem sabia que precisava.</p>
@@ -90,7 +97,9 @@
 
         <div class="flip-card right-card2">
             <div class="flip-inner">
-                <div class="flip-front"><span>Passe o mouse aqui!</span></div>
+                <div class="flip-front">
+                    <span>Passe o mouse aqui!</span>
+                </div>
                 <div class="flip-back">
                     <div class="texto">
                         <p>Com você, até o silêncio parece confortável.</p>
@@ -101,7 +110,9 @@
 
         <div class="flip-card right-card3">
             <div class="flip-inner">
-                <div class="flip-front"><span>Passe o mouse aqui!</span></div>
+                <div class="flip-front">
+                    <span>Passe o mouse aqui!</span>
+                </div>
                 <div class="flip-back">
                     <div class="texto">
                         <p>E no meio de tudo isso, eu percebi que é exatamente onde eu quero estar.</p>
@@ -112,7 +123,7 @@
 
     </section>
 
-    <section id="tempo" class="infos fade-in">
+    <section id="tempo" class="infos">
         <div class="lado esquerdo caixa">
             <p>É estranho como tudo ficou mais leve depois que você apareceu.</p>
             <p>Você virou parte dos meus dias sem esforço nenhum.</p>
@@ -138,7 +149,7 @@
         </div>
     </section>
 
-    <section id="carta" class="carta-section fade-in">
+    <section id="carta" class="carta-section">
         <div class="caixa">
             <h2 class="titulo-maquina">Carta Aberta</h2>
             <p class="carta-texto">
@@ -152,7 +163,7 @@
         </div>
     </section>
 
-    <section id="motivos" class="motivos-section fade-in">
+    <section id="motivos" class="motivos-section">
         <div class="caixa">
             <h2 class="titulo-maquina">Por que eu te amo</h2>
             <ul class="motivos-lista">
@@ -160,12 +171,31 @@
                 <li>Sua presença me transforma;</li>
                 <li>A gente se entende;</li>
                 <li>Você me faz bem</li>
+                <li></li>
             </ul>
         </div>
     </section>
 
+    <!-- ===================== MEMÓRIAS ===================== -->
+    <section id="memorias" class="memorias-section">
+        <h2 class="titulo-maquina">Memórias</h2>
+        <p class="memorias-subtitulo">Cada momento nosso, guardado aqui ❤️</p>
+
+        <div class="memorias-grid" id="memoriasGrid">
+            <!-- As mídias são injetadas pelo script em ordem aleatória -->
+            <!-- Fotos: images/mem_photo1.jpg ... images/mem_photo10.jpg  -->
+            <!-- Vídeos: videos/mem_video1.mp4 ... videos/mem_video10.mp4 -->
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <div class="lightbox-content" id="lightboxContent"></div>
+    </div>
+
     <footer>
-        <p>❤️ d ❤️ u ❤️ d ❤️ a ❤️</sp>
+        <p>❤️ d ❤️ u ❤️ d ❤️ a ❤️</p>
     </footer>
 
     <script src="script.js"></script>

@@ -1,27 +1,24 @@
-// ─── Contador de tempo (CORRIGIDO) ─────────────────────────────────────────
+// ─── Contador de tempo ───────────────────────────────────────────────────────
 
 function calcularTempo(dataInicial) {
   const agora = new Date();
+  let diff = agora - dataInicial;
 
-  let anos = agora.getFullYear() - dataInicial.getFullYear();
-  let meses = agora.getMonth() - dataInicial.getMonth();
-  let dias = agora.getDate() - dataInicial.getDate();
+  const totalSegundos = Math.floor(diff / 1000);
 
-  if (dias < 0) {
-    meses--;
-    dias += new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
-  }
+  const meses = Math.floor(totalSegundos / (60 * 60 * 24 * 30));
+  const semanas = Math.floor((totalSegundos % (60 * 60 * 24 * 30)) / (60 * 60 * 24 * 7));
+  const dias = Math.floor((totalSegundos % (60 * 60 * 24 * 7)) / (60 * 60 * 24));
+  const horas = Math.floor((totalSegundos % (60 * 60 * 24)) / (60 * 60));
+  const minutos = Math.floor((totalSegundos % (60 * 60)) / 60);
+  const segundos = totalSegundos % 60;
 
-  if (meses < 0) {
-    anos--;
-    meses += 12;
-  }
-
-  return `
-    <div class="time-item"><span>Anos:</span> <span>${anos}</span></div>
-    <div class="time-item"><span>Meses:</span> <span>${meses}</span></div>
-    <div class="time-item"><span>Dias:</span> <span>${dias}</span></div>
-  `;
+  return `<div class="time-item"><span>Meses:</span> <span>${meses}</span></div>` +
+    `<div class="time-item"><span>Semanas:</span> <span>${semanas}</span></div>` +
+    `<div class="time-item"><span>Dias:</span> <span>${dias}</span></div>` +
+    `<div class="time-item"><span>Horas:</span> <span>${horas}</span></div>` +
+    `<div class="time-item"><span>Minutos:</span> <span>${minutos}</span></div>` +
+    `<div class="time-item"><span>Segundos:</span> <span>${segundos}</span></div>`;
 }
 
 const primeiraVista = new Date("2024-08-14T00:00:00");
@@ -35,20 +32,18 @@ function atualizar() {
 setInterval(atualizar, 1000);
 atualizar();
 
-
-// ─── Hero title wobble ─────────────────────────────────────────────────────
+// ─── Hero title wobble ────────────────────────────────────────────────────────
 
 const heroTitle = document.querySelector('.hero h1');
 if (heroTitle) {
   heroTitle.innerHTML = heroTitle.textContent.split('').map(char => {
     return char === ' '
-      ? '<span>&nbsp;</span>'
-      : `<span>${char}</span>`;
+      ? '<span class="titulo-letra">&nbsp;</span>'
+      : `<span class="titulo-letra">${char}</span>`;
   }).join('');
 }
 
-
-// ─── Flip card ─────────────────────────────────────────────────────────────
+// ─── Flip card (mobile) ───────────────────────────────────────────────────────
 
 document.querySelectorAll('.flip-card').forEach(card => {
   card.addEventListener('click', () => {
@@ -56,9 +51,10 @@ document.querySelectorAll('.flip-card').forEach(card => {
   });
 });
 
+// ─── Galeria de Memórias ──────────────────────────────────────────────────────
 
-// ─── Galeria de Memórias ───────────────────────────────────────────────────
-
+// Lista de mídias: coloque aqui os arquivos quando tiver.
+// type: 'photo' ou 'video'
 const medias = [
   { type: 'photo', src: 'images/mem_photo1.jpg' },
   { type: 'photo', src: 'images/mem_photo2.jpg' },
@@ -82,6 +78,7 @@ const medias = [
   { type: 'video', src: 'videos/mem_video10.mp4' },
 ];
 
+// Fisher-Yates shuffle
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -92,47 +89,46 @@ function shuffle(arr) {
 }
 
 const grid = document.getElementById('memoriasGrid');
+const shuffled = shuffle(medias);
 
-if (grid) {
-  const shuffled = shuffle(medias);
+shuffled.forEach((item, index) => {
+  const cell = document.createElement('div');
+  cell.className = 'memoria-item';
+  cell.dataset.index = index;
 
-  shuffled.forEach(item => {
-    const cell = document.createElement('div');
-    cell.className = 'memoria-item';
+  if (item.type === 'photo') {
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = 'Memória';
+    img.loading = 'lazy';
+    cell.appendChild(img);
+  } else {
+    const video = document.createElement('video');
+    video.src = item.src;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
 
-    if (item.type === 'photo') {
-      const img = document.createElement('img');
-      img.src = item.src;
-      img.alt = 'Memória';
-      img.loading = 'lazy';
-      cell.appendChild(img);
-    } else {
-      const video = document.createElement('video');
-      video.src = item.src;
-      video.muted = true;
-      video.loop = true;
+    // play on hover (desktop)
+    cell.addEventListener('mouseenter', () => video.play());
+    cell.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
 
-      cell.addEventListener('mouseenter', () => video.play());
-      cell.addEventListener('mouseleave', () => {
-        video.pause();
-        video.currentTime = 0;
-      });
+    // ícone de play
+    const playIcon = document.createElement('div');
+    playIcon.className = 'play-icon';
+    playIcon.innerHTML = '▶';
 
-      const playIcon = document.createElement('div');
-      playIcon.className = 'play-icon';
-      playIcon.innerHTML = '▶';
+    cell.appendChild(video);
+    cell.appendChild(playIcon);
+  }
 
-      cell.appendChild(video);
-      cell.appendChild(playIcon);
-    }
+  // Armazena referência para lightbox
+  cell.addEventListener('click', () => openLightbox(item));
+  grid.appendChild(cell);
+});
 
-    cell.addEventListener('click', () => openLightbox(item));
-    grid.appendChild(cell);
-  });
-}
-
-
-// ─── Lightbox ──────────────────────────────────────────────────────────────
+// ─── Lightbox ─────────────────────────────────────────────────────────────────
 
 const lightbox = document.getElementById('lightbox');
 const lightboxContent = document.getElementById('lightboxContent');
@@ -144,12 +140,14 @@ function openLightbox(item) {
   if (item.type === 'photo') {
     const img = document.createElement('img');
     img.src = item.src;
+    img.alt = 'Memória';
     lightboxContent.appendChild(img);
   } else {
     const video = document.createElement('video');
     video.src = item.src;
     video.controls = true;
     video.autoplay = true;
+    video.playsInline = true;
     lightboxContent.appendChild(video);
   }
 
@@ -160,128 +158,20 @@ function openLightbox(item) {
 function closeLightbox() {
   lightbox.classList.remove('active');
   document.body.style.overflow = '';
-
+  // Para o vídeo ao fechar
   const video = lightboxContent.querySelector('video');
   if (video) video.pause();
-
-  setTimeout(() => {
-    lightboxContent.innerHTML = '';
-  }, 300);
+  setTimeout(() => { lightboxContent.innerHTML = ''; }, 300);
 }
 
 lightboxClose.addEventListener('click', closeLightbox);
 
+// Fecha clicando fora do conteúdo
 lightbox.addEventListener('click', (e) => {
   if (e.target === lightbox) closeLightbox();
 });
 
+// Fecha com ESC
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
-});
-
-
-// ─── Fade-in + Parallax ─────────────────────────────────────────────────────
-
-window.addEventListener("scroll", () => {
-  const scroll = window.scrollY;
-  document.body.style.backgroundPosition = `center ${scroll * 0.3}px`;
-});
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.15 });
-
-document.querySelectorAll('section').forEach(sec => {
-  sec.classList.add('fade-in');
-  observer.observe(sec);
-});
-
-
-// ─── Efeito magnético ──────────────────────────────────────────────────────
-
-document.querySelectorAll('.flip-card, .hex').forEach(el => {
-  el.addEventListener('mousemove', (e) => {
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    el.style.transform = `rotateY(${x * 0.05}deg) rotateX(${y * -0.05}deg) scale(1.05)`;
-  });
-
-  el.addEventListener('mouseleave', () => {
-    el.style.transform = '';
-  });
-});
-
-// ─── Smooth scroll avançado (tween) ───────────────────────────────
-
-function smoothScrollTo(targetY, duration = 800) {
-  const startY = window.scrollY;
-  const distance = targetY - startY;
-  let startTime = null;
-
-  function easeInOutCubic(t) {
-    return t < 0.5
-      ? 4 * t * t * t
-      : 1 - Math.pow(-2 * t + 2, 3) / 2;
-  }
-
-  function animation(currentTime) {
-    if (!startTime) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
-    const progress = Math.min(timeElapsed / duration, 1);
-
-    const ease = easeInOutCubic(progress);
-
-    window.scrollTo(0, startY + distance * ease);
-
-    if (timeElapsed < duration) {
-      requestAnimationFrame(animation);
-    }
-  }
-
-  requestAnimationFrame(animation);
-}
-
-// intercepta cliques da navbar
-document.querySelectorAll('.navbar a').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-
-    const targetId = this.getAttribute('href');
-    const target = document.querySelector(targetId);
-
-    if (!target) return;
-
-    const offset = 80; // espaço da navbar
-    const targetY = target.getBoundingClientRect().top + window.scrollY - offset;
-
-    smoothScrollTo(targetY, 900);
-  });
-});
-
-// destaque da seção ativa
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".navbar a");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100;
-    if (scrollY >= sectionTop) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
-  });
 });
