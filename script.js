@@ -175,3 +175,97 @@ lightbox.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
 });
+
+// ─── Smooth scroll com tween real ─────────────────────
+
+document.querySelectorAll('.navbar a').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute('href'));
+    const offset = target.offsetTop - 60;
+
+    window.scrollTo({
+      top: offset,
+      behavior: 'smooth'
+    });
+  });
+});
+
+
+// ─── Navbar efeito ao scroll ─────────────────────
+
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+
+// ─── Fade-in ao aparecer ─────────────────────
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+});
+
+document.querySelectorAll('section').forEach(sec => {
+  sec.classList.add('fade-in');
+  observer.observe(sec);
+});
+
+
+// ─── Parallax leve ─────────────────────
+
+window.addEventListener('scroll', () => {
+  document.body.style.backgroundPositionY = window.scrollY * 0.3 + 'px';
+});
+
+
+// ─── Partículas seguindo o mouse ─────────────────────
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+window.addEventListener('mousemove', e => {
+  for (let i = 0; i < 3; i++) {
+    particles.push({
+      x: e.clientX,
+      y: e.clientY,
+      size: Math.random() * 3 + 1,
+      life: 50
+    });
+  }
+});
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach((p, i) => {
+    p.life--;
+    p.y -= 0.5;
+
+    ctx.fillStyle = `rgba(255,150,200,${p.life / 50})`;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (p.life <= 0) particles.splice(i, 1);
+  });
+
+  requestAnimationFrame(animateParticles);
+}
+
+animateParticles();
