@@ -253,3 +253,7 @@ body {
   background: rgba(20, 0, 20, 0.85);
   backdrop-filter: blur(15px);
 }
+
+.navbar a.active {
+  color: #ff8fdc;
+}
