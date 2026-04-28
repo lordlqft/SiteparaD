@@ -226,6 +226,7 @@ body {
 
 body {
   background-attachment: fixed;
+  cursor: url("images/arrow.cur"), auto;
 }
 
 /* ===== GLOW GERAL ===== */
