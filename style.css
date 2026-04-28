@@ -712,3 +712,46 @@ a {
   transform: scale(1.15);
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
+
+/* ─── Underline animado ───────────────────────── */
+
+.navbar a {
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* ─── Link ativo ───────────────────────── */
+
+.navbar a.active {
+  color: #ffffff;
+}
+
+.navbar a.active::after {
+  width: 100%;
+}
+
+/* ─── Scroll snap ───────────────────────── */
+
+html {
+  scroll-snap-type: y proximity;
+}
+
+section {
+  scroll-snap-align: start;
+}
