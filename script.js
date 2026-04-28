@@ -177,22 +177,46 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ─── Smooth scroll com tween real ─────────────────────
+// ─── Smooth scroll com animação real ─────────────────────
+
+function smoothScrollTo(targetY, duration = 1000) {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  let startTime = null;
+
+  function ease(t) {
+    return t < 0.5
+      ? 4 * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function animation(currentTime) {
+    if (!startTime) startTime = currentTime;
+
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+    const eased = ease(progress);
+
+    window.scrollTo(0, startY + distance * eased);
+
+    if (progress < 1) {
+      requestAnimationFrame(animation);
+    }
+  }
+
+  requestAnimationFrame(animation);
+}
 
 document.querySelectorAll('.navbar a').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();
 
     const target = document.querySelector(this.getAttribute('href'));
-    const offset = target.offsetTop - 60;
+    const offset = target.offsetTop - 70;
 
-    window.scrollTo({
-      top: offset,
-      behavior: 'smooth'
-    });
+    smoothScrollTo(offset, 1000);
   });
 });
-
-
 // ─── Navbar efeito ao scroll ─────────────────────
 
 window.addEventListener('scroll', () => {
