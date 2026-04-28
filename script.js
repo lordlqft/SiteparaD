@@ -270,3 +270,36 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+
+// ─── Honeycomb 3D effect ─────────────────────
+
+const honeycomb = document.querySelector('.honeycomb');
+const hexes = document.querySelectorAll('.hex');
+
+if (honeycomb) {
+  honeycomb.addEventListener('mousemove', (e) => {
+    const rect = honeycomb.getBoundingClientRect();
+
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    const rotateX = y * 10;  // intensidade vertical
+    const rotateY = x * -10; // intensidade horizontal
+
+    honeycomb.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+    // leve profundidade individual nos hex
+    hexes.forEach((hex, index) => {
+      const depth = (index % 2 === 0 ? 10 : 20);
+      hex.style.transform = `translateZ(${depth}px)`;
+    });
+  });
+
+  honeycomb.addEventListener('mouseleave', () => {
+    honeycomb.style.transform = `rotateX(0deg) rotateY(0deg)`;
+
+    hexes.forEach(hex => {
+      hex.style.transform = `translateZ(0px)`;
+    });
+  });
+}
