@@ -216,3 +216,50 @@ document.querySelectorAll('.flip-card, .hex').forEach(el => {
     el.style.transform = '';
   });
 });
+
+// ─── Smooth scroll avançado (tween) ───────────────────────────────
+
+function smoothScrollTo(targetY, duration = 800) {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  let startTime = null;
+
+  function easeInOutCubic(t) {
+    return t < 0.5
+      ? 4 * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function animation(currentTime) {
+    if (!startTime) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+
+    const ease = easeInOutCubic(progress);
+
+    window.scrollTo(0, startY + distance * ease);
+
+    if (timeElapsed < duration) {
+      requestAnimationFrame(animation);
+    }
+  }
+
+  requestAnimationFrame(animation);
+}
+
+// intercepta cliques da navbar
+document.querySelectorAll('.navbar a').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const targetId = this.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    if (!target) return;
+
+    const offset = 80; // espaço da navbar
+    const targetY = target.getBoundingClientRect().top + window.scrollY - offset;
+
+    smoothScrollTo(targetY, 900);
+  });
+});
