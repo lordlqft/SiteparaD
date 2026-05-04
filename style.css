@@ -779,3 +779,18 @@ section {
 .hex:hover {
   filter: brightness(1.15);
 }
+
+/* Remove barra de scroll (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Remove barra de scroll (Firefox) */
+html {
+  scrollbar-width: none;
+}
+
+/* Remove barra de scroll (IE antigo) */
+body {
+  -ms-overflow-style: none;
+}
