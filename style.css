@@ -687,6 +687,10 @@ body {
   cursor: url('images/arrow.png'), auto;
 }
 
+a, button, .hex, .flip-card {
+  cursor: url('images/pointer.png'), pointer;
+}
+
 /* ─── Cursor magnético ───────────────────────── */
 
 a {
