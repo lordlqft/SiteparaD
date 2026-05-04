@@ -53,7 +53,6 @@ document.querySelectorAll('.flip-card').forEach(card => {
 
 // ─── Galeria de Memórias ──────────────────────────────────────────────────────
 
-// 🔥 ATUALIZADO COM SEUS ARQUIVOS REAIS
 const medias = [
   { type: 'photo', src: 'images/memoria1.png' },
   { type: 'photo', src: 'images/memoria2.png' },
@@ -81,7 +80,6 @@ const medias = [
   { type: 'video', src: 'images/Memoria19.mp4' }
 ];
 
-// Fisher-Yates shuffle (MANTIDO)
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -97,12 +95,10 @@ const shuffled = shuffle(medias);
 shuffled.forEach((item, index) => {
   const cell = document.createElement('div');
   cell.className = 'memoria-item';
-  cell.dataset.index = index;
 
   if (item.type === 'photo') {
     const img = document.createElement('img');
     img.src = item.src;
-    img.alt = 'Memória';
     img.loading = 'lazy';
     cell.appendChild(img);
   } else {
@@ -111,7 +107,6 @@ shuffled.forEach((item, index) => {
     video.muted = true;
     video.loop = true;
     video.playsInline = true;
-    video.preload = 'metadata';
 
     cell.addEventListener('mouseenter', () => video.play());
     cell.addEventListener('mouseleave', () => {
@@ -119,19 +114,19 @@ shuffled.forEach((item, index) => {
       video.currentTime = 0;
     });
 
-    const playIcon = document.createElement('div');
-    playIcon.className = 'play-icon';
-    playIcon.innerHTML = '▶';
+    const icon = document.createElement('div');
+    icon.className = 'play-icon';
+    icon.innerHTML = '▶';
 
     cell.appendChild(video);
-    cell.appendChild(playIcon);
+    cell.appendChild(icon);
   }
 
   cell.addEventListener('click', () => openLightbox(item));
   grid.appendChild(cell);
 });
 
-// ─── Lightbox ─────────────────────────────────────────────────────────────────
+// ─── Lightbox ───────────────────────────────────────────────────────────────
 
 const lightbox = document.getElementById('lightbox');
 const lightboxContent = document.getElementById('lightboxContent');
@@ -143,14 +138,12 @@ function openLightbox(item) {
   if (item.type === 'photo') {
     const img = document.createElement('img');
     img.src = item.src;
-    img.alt = 'Memória';
     lightboxContent.appendChild(img);
   } else {
     const video = document.createElement('video');
     video.src = item.src;
     video.controls = true;
     video.autoplay = true;
-    video.playsInline = true;
     lightboxContent.appendChild(video);
   }
 
@@ -161,9 +154,7 @@ function openLightbox(item) {
 function closeLightbox() {
   lightbox.classList.remove('active');
   document.body.style.overflow = '';
-  const video = lightboxContent.querySelector('video');
-  if (video) video.pause();
-  setTimeout(() => { lightboxContent.innerHTML = ''; }, 300);
+  lightboxContent.innerHTML = '';
 }
 
 lightboxClose.addEventListener('click', closeLightbox);
@@ -176,7 +167,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
 });
 
-// ─── Smooth scroll com animação real ─────────────────────
+// ─── Smooth Scroll ───────────────────────────────────────────────────────────
 
 function smoothScrollTo(targetY, duration = 1000) {
   const startY = window.scrollY;
@@ -192,15 +183,12 @@ function smoothScrollTo(targetY, duration = 1000) {
   function animation(currentTime) {
     if (!startTime) startTime = currentTime;
 
-    const timeElapsed = currentTime - startTime;
-    const progress = Math.min(timeElapsed / duration, 1);
+    const progress = Math.min((currentTime - startTime) / duration, 1);
     const eased = ease(progress);
 
     window.scrollTo(0, startY + distance * eased);
 
-    if (progress < 1) {
-      requestAnimationFrame(animation);
-    }
+    if (progress < 1) requestAnimationFrame(animation);
   }
 
   requestAnimationFrame(animation);
@@ -213,18 +201,18 @@ document.querySelectorAll('.navbar a').forEach(link => {
     const target = document.querySelector(this.getAttribute('href'));
     const offset = target.offsetTop - 70;
 
-    smoothScrollTo(offset, 1000);
+    smoothScrollTo(offset);
   });
 });
 
-// ─── Navbar efeito ao scroll ─────────────────────
+// ─── Navbar scroll ─────────────────────
 
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// ─── Fade-in ao aparecer ─────────────────────
+// ─── Fade-in ─────────────────────
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -239,67 +227,18 @@ document.querySelectorAll('section').forEach(sec => {
   observer.observe(sec);
 });
 
-// ─── Parallax ─────────────────────
+// ─── REMOVIDO efeito 3D e substituído por hover elegante ─────────────────────
 
-const parallax = document.querySelector('.parallax-bg');
-
-window.addEventListener('scroll', () => {
-  if (parallax) {
-    parallax.style.transform = `translateY(${window.scrollY * 0.2}px)`;
-  }
-});
-
-// ─── Seção ativa na navbar ─────────────────────
-
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.navbar a');
-
-window.addEventListener('scroll', () => {
-  let current = '';
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100;
-    if (window.scrollY >= sectionTop) {
-      current = section.getAttribute('id');
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === '#' + current) {
-      link.classList.add('active');
-    }
-  });
-});
-
-// ─── Honeycomb 3D effect ─────────────────────
-
-const honeycomb = document.querySelector('.honeycomb');
 const hexes = document.querySelectorAll('.hex');
 
-if (honeycomb) {
-  honeycomb.addEventListener('mousemove', (e) => {
-    const rect = honeycomb.getBoundingClientRect();
-
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-    const rotateX = y * 10;
-    const rotateY = x * -10;
-
-    honeycomb.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-    hexes.forEach((hex, index) => {
-      const depth = (index % 2 === 0 ? 10 : 20);
-      hex.style.transform = `translateZ(${depth}px)`;
-    });
+hexes.forEach(hex => {
+  hex.addEventListener('mouseenter', () => {
+    hex.style.transform = "scale(1.15)";
+    hex.style.zIndex = "10";
   });
 
-  honeycomb.addEventListener('mouseleave', () => {
-    honeycomb.style.transform = `rotateX(0deg) rotateY(0deg)`;
-
-    hexes.forEach(hex => {
-      hex.style.transform = `translateZ(0px)`;
-    });
+  hex.addEventListener('mouseleave', () => {
+    hex.style.transform = "scale(1)";
+    hex.style.zIndex = "1";
   });
-}
+});
