@@ -53,32 +53,35 @@ document.querySelectorAll('.flip-card').forEach(card => {
 
 // ─── Galeria de Memórias ──────────────────────────────────────────────────────
 
-// Lista de mídias: coloque aqui os arquivos quando tiver.
-// type: 'photo' ou 'video'
+// 🔥 ATUALIZADO COM SEUS ARQUIVOS REAIS
 const medias = [
-  { type: 'photo', src: 'images/mem_photo1.jpg' },
-  { type: 'photo', src: 'images/mem_photo2.jpg' },
-  { type: 'photo', src: 'images/mem_photo3.jpg' },
-  { type: 'photo', src: 'images/mem_photo4.jpg' },
-  { type: 'photo', src: 'images/mem_photo5.jpg' },
-  { type: 'photo', src: 'images/mem_photo6.jpg' },
-  { type: 'photo', src: 'images/mem_photo7.jpg' },
-  { type: 'photo', src: 'images/mem_photo8.jpg' },
-  { type: 'photo', src: 'images/mem_photo9.jpg' },
-  { type: 'photo', src: 'images/mem_photo10.jpg' },
-  { type: 'video', src: 'videos/mem_video1.mp4' },
-  { type: 'video', src: 'videos/mem_video2.mp4' },
-  { type: 'video', src: 'videos/mem_video3.mp4' },
-  { type: 'video', src: 'videos/mem_video4.mp4' },
-  { type: 'video', src: 'videos/mem_video5.mp4' },
-  { type: 'video', src: 'videos/mem_video6.mp4' },
-  { type: 'video', src: 'videos/mem_video7.mp4' },
-  { type: 'video', src: 'videos/mem_video8.mp4' },
-  { type: 'video', src: 'videos/mem_video9.mp4' },
-  { type: 'video', src: 'videos/mem_video10.mp4' },
+  { type: 'photo', src: 'images/memoria1.png' },
+  { type: 'photo', src: 'images/memoria2.png' },
+  { type: 'photo', src: 'images/memoria3.png' },
+
+  { type: 'photo', src: 'images/Memoria4.png.jpeg' },
+  { type: 'photo', src: 'images/Memoria5.png.jpeg' },
+
+  { type: 'video', src: 'images/Memoria6.mp4' },
+
+  { type: 'photo', src: 'images/Memoria8.png.jpeg' },
+  { type: 'photo', src: 'images/Memoria9.png.jpeg' },
+  { type: 'photo', src: 'images/Memoria10.png.jpeg' },
+  { type: 'photo', src: 'images/Memoria11.png.jpeg' },
+  { type: 'photo', src: 'images/Memoria12.png.jpeg' },
+
+  { type: 'video', src: 'images/Memoria13.mp4' },
+  { type: 'video', src: 'images/Memoria14.mp4' },
+  { type: 'video', src: 'images/Memoria15.mp4' },
+
+  { type: 'photo', src: 'images/Memoria16.png.jpeg' },
+  { type: 'photo', src: 'images/Memoria17.png.jpeg' },
+  { type: 'photo', src: 'images/Memoria18.png.jpeg' },
+
+  { type: 'video', src: 'images/Memoria19.mp4' }
 ];
 
-// Fisher-Yates shuffle
+// Fisher-Yates shuffle (MANTIDO)
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -110,11 +113,12 @@ shuffled.forEach((item, index) => {
     video.playsInline = true;
     video.preload = 'metadata';
 
-    // play on hover (desktop)
     cell.addEventListener('mouseenter', () => video.play());
-    cell.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+    cell.addEventListener('mouseleave', () => {
+      video.pause();
+      video.currentTime = 0;
+    });
 
-    // ícone de play
     const playIcon = document.createElement('div');
     playIcon.className = 'play-icon';
     playIcon.innerHTML = '▶';
@@ -123,7 +127,6 @@ shuffled.forEach((item, index) => {
     cell.appendChild(playIcon);
   }
 
-  // Armazena referência para lightbox
   cell.addEventListener('click', () => openLightbox(item));
   grid.appendChild(cell);
 });
@@ -158,7 +161,6 @@ function openLightbox(item) {
 function closeLightbox() {
   lightbox.classList.remove('active');
   document.body.style.overflow = '';
-  // Para o vídeo ao fechar
   const video = lightboxContent.querySelector('video');
   if (video) video.pause();
   setTimeout(() => { lightboxContent.innerHTML = ''; }, 300);
@@ -166,17 +168,14 @@ function closeLightbox() {
 
 lightboxClose.addEventListener('click', closeLightbox);
 
-// Fecha clicando fora do conteúdo
 lightbox.addEventListener('click', (e) => {
   if (e.target === lightbox) closeLightbox();
 });
 
-// Fecha com ESC
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
 });
 
-// ─── Smooth scroll com tween real ─────────────────────
 // ─── Smooth scroll com animação real ─────────────────────
 
 function smoothScrollTo(targetY, duration = 1000) {
@@ -217,13 +216,13 @@ document.querySelectorAll('.navbar a').forEach(link => {
     smoothScrollTo(offset, 1000);
   });
 });
+
 // ─── Navbar efeito ao scroll ─────────────────────
 
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
-
 
 // ─── Fade-in ao aparecer ─────────────────────
 
@@ -239,6 +238,8 @@ document.querySelectorAll('section').forEach(sec => {
   sec.classList.add('fade-in');
   observer.observe(sec);
 });
+
+// ─── Parallax ─────────────────────
 
 const parallax = document.querySelector('.parallax-bg');
 
@@ -283,12 +284,11 @@ if (honeycomb) {
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-    const rotateX = y * 10;  // intensidade vertical
-    const rotateY = x * -10; // intensidade horizontal
+    const rotateX = y * 10;
+    const rotateY = x * -10;
 
     honeycomb.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
-    // leve profundidade individual nos hex
     hexes.forEach((hex, index) => {
       const depth = (index % 2 === 0 ? 10 : 20);
       hex.style.transform = `translateZ(${depth}px)`;
@@ -303,78 +303,3 @@ if (honeycomb) {
     });
   });
 }
-
-const medias = [
-  { type: 'photo', src: 'images/memoria1.png' },
-  { type: 'photo', src: 'images/memoria2.png' },
-  { type: 'photo', src: 'images/memoria3.png' },
-
-  { type: 'photo', src: 'images/Memoria4.png.jpeg' },
-  { type: 'photo', src: 'images/Memoria5.png.jpeg' },
-
-  { type: 'video', src: 'images/Memoria6.mp4' },
-
-  { type: 'photo', src: 'images/Memoria8.png.jpeg' },
-  { type: 'photo', src: 'images/Memoria9.png.jpeg' },
-  { type: 'photo', src: 'images/Memoria10.png.jpeg' },
-  { type: 'photo', src: 'images/Memoria11.png.jpeg' },
-  { type: 'photo', src: 'images/Memoria12.png.jpeg' },
-
-  { type: 'video', src: 'images/Memoria13.mp4' },
-  { type: 'video', src: 'images/Memoria14.mp4' },
-  { type: 'video', src: 'images/Memoria15.mp4' },
-
-  { type: 'photo', src: 'images/Memoria16.png.jpeg' },
-  { type: 'photo', src: 'images/Memoria17.png.jpeg' },
-  { type: 'photo', src: 'images/Memoria18.png.jpeg' },
-
-  { type: 'video', src: 'images/Memoria19.mp4' }
-];
-
-// Embaralhar
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-const grid = document.getElementById('memoriasGrid');
-const shuffled = shuffle(medias);
-
-// Criar grid
-shuffled.forEach((item) => {
-  const cell = document.createElement('div');
-  cell.className = 'memoria-item';
-
-  if (item.type === 'photo') {
-    const img = document.createElement('img');
-    img.src = item.src;
-    img.loading = 'lazy';
-    cell.appendChild(img);
-  } else {
-    const video = document.createElement('video');
-    video.src = item.src;
-    video.muted = true;
-    video.loop = true;
-    video.playsInline = true;
-
-    cell.addEventListener('mouseenter', () => video.play());
-    cell.addEventListener('mouseleave', () => {
-      video.pause();
-      video.currentTime = 0;
-    });
-
-    const icon = document.createElement('div');
-    icon.className = 'play-icon';
-    icon.innerHTML = '▶';
-
-    cell.appendChild(video);
-    cell.appendChild(icon);
-  }
-
-  cell.addEventListener('click', () => openLightbox(item));
-  grid.appendChild(cell);
-});
