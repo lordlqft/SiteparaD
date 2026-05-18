@@ -2,27 +2,67 @@
 
 function calcularTempo(dataInicial) {
   const agora = new Date();
-  let diff = agora - dataInicial;
 
-  const totalSegundos = Math.floor(diff / 1000);
+  let anos = agora.getFullYear() - dataInicial.getFullYear();
+  let meses = agora.getMonth() - dataInicial.getMonth();
+  let dias = agora.getDate() - dataInicial.getDate();
 
-  const meses = Math.floor(totalSegundos / (60 * 60 * 24 * 30));
-  const semanas = Math.floor((totalSegundos % (60 * 60 * 24 * 30)) / (60 * 60 * 24 * 7));
-  const dias = Math.floor((totalSegundos % (60 * 60 * 24 * 7)) / (60 * 60 * 24));
-  const horas = Math.floor((totalSegundos % (60 * 60 * 24)) / (60 * 60));
-  const minutos = Math.floor((totalSegundos % (60 * 60)) / 60);
-  const segundos = totalSegundos % 60;
+  let horas = agora.getHours() - dataInicial.getHours();
+  let minutos = agora.getMinutes() - dataInicial.getMinutes();
+  let segundos = agora.getSeconds() - dataInicial.getSeconds();
 
-  return `<div class="time-item"><span>Meses:</span> <span>${meses}</span></div>` +
-    `<div class="time-item"><span>Semanas:</span> <span>${semanas}</span></div>` +
-    `<div class="time-item"><span>Dias:</span> <span>${dias}</span></div>` +
-    `<div class="time-item"><span>Horas:</span> <span>${horas}</span></div>` +
-    `<div class="time-item"><span>Minutos:</span> <span>${minutos}</span></div>` +
-    `<div class="time-item"><span>Segundos:</span> <span>${segundos}</span></div>`;
+  // Ajustes negativos
+  if (segundos < 0) {
+    segundos += 60;
+    minutos--;
+  }
+
+  if (minutos < 0) {
+    minutos += 60;
+    horas--;
+  }
+
+  if (horas < 0) {
+    horas += 24;
+    dias--;
+  }
+
+  if (dias < 0) {
+    const ultimoMes = new Date(
+      agora.getFullYear(),
+      agora.getMonth(),
+      0
+    ).getDate();
+
+    dias += ultimoMes;
+    meses--;
+  }
+
+  if (meses < 0) {
+    meses += 12;
+    anos--;
+  }
+
+  // Semanas baseadas nos dias restantes
+  const semanas = Math.floor(dias / 7);
+  dias = dias % 7;
+
+  return `
+    <div class="time-item"><span>Anos:</span> <span>${anos}</span></div>
+    <div class="time-item"><span>Meses:</span> <span>${meses}</span></div>
+    <div class="time-item"><span>Semanas:</span> <span>${semanas}</span></div>
+    <div class="time-item"><span>Dias:</span> <span>${dias}</span></div>
+    <div class="time-item"><span>Horas:</span> <span>${horas}</span></div>
+    <div class="time-item"><span>Minutos:</span> <span>${minutos}</span></div>
+    <div class="time-item"><span>Segundos:</span> <span>${segundos}</span></div>
+  `;
 }
 
+// Datas
 const primeiraVista = new Date("2024-08-14T00:00:00");
-const namoro = new Date("2025-06-18T00:00:00");
+
+// CORRIGIDO:
+const namoro = new Date("2024-06-18T00:00:00");
 
 function atualizar() {
   document.getElementById("data1").innerHTML = calcularTempo(primeiraVista);
