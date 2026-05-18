@@ -796,3 +796,14 @@ section {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 100, 180, 0.7);
 }
+
+.Obrigado-lista {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.Obrigado-lista li {
+    margin: 6px 0;
+    text-align: left;
+}
