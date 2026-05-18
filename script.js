@@ -1,5 +1,3 @@
-// ─── Contador de tempo ───────────────────────────────────────────────────────
-
 function calcularTempo(dataInicial) {
   const agora = new Date();
 
@@ -11,7 +9,6 @@ function calcularTempo(dataInicial) {
   let minutos = agora.getMinutes() - dataInicial.getMinutes();
   let segundos = agora.getSeconds() - dataInicial.getSeconds();
 
-  // Ajustes negativos
   if (segundos < 0) {
     segundos += 60;
     minutos--;
@@ -43,7 +40,6 @@ function calcularTempo(dataInicial) {
     anos--;
   }
 
-  // Semanas baseadas nos dias restantes
   const semanas = Math.floor(dias / 7);
   dias = dias % 7;
 
@@ -58,10 +54,7 @@ function calcularTempo(dataInicial) {
   `;
 }
 
-// Datas
 const primeiraVista = new Date("2024-08-14T00:00:00");
-
-// CORRIGIDO:
 const namoro = new Date("2025-06-18T00:00:00");
 
 function atualizar() {
@@ -72,9 +65,8 @@ function atualizar() {
 setInterval(atualizar, 1000);
 atualizar();
 
-// ─── Hero title wobble ────────────────────────────────────────────────────────
-
 const heroTitle = document.querySelector('.hero h1');
+
 if (heroTitle) {
   heroTitle.innerHTML = heroTitle.textContent.split('').map(char => {
     return char === ' '
@@ -83,56 +75,48 @@ if (heroTitle) {
   }).join('');
 }
 
-// ─── Flip card (mobile) ───────────────────────────────────────────────────────
-
 document.querySelectorAll('.flip-card').forEach(card => {
   card.addEventListener('click', () => {
     card.classList.toggle('flipped');
   });
 });
 
-// ─── Galeria de Memórias ──────────────────────────────────────────────────────
-
 const medias = [
   { type: 'photo', src: 'images/memoria1.png' },
   { type: 'photo', src: 'images/memoria2.png' },
   { type: 'photo', src: 'images/memoria3.png' },
-
   { type: 'photo', src: 'images/Memoria4.png.jpeg' },
   { type: 'photo', src: 'images/Memoria5.png.jpeg' },
-
   { type: 'video', src: 'images/Memoria6.mp4' },
-
   { type: 'photo', src: 'images/Memoria8.png.jpeg' },
   { type: 'photo', src: 'images/Memoria9.png.jpeg' },
   { type: 'photo', src: 'images/Memoria10.png.jpeg' },
   { type: 'photo', src: 'images/Memoria11.png.jpeg' },
   { type: 'photo', src: 'images/Memoria12.png.jpeg' },
-
   { type: 'video', src: 'images/Memoria13.mp4' },
   { type: 'video', src: 'images/Memoria14.mp4' },
   { type: 'video', src: 'images/Memoria15.mp4' },
-
   { type: 'photo', src: 'images/Memoria16.png.jpeg' },
   { type: 'photo', src: 'images/Memoria17.png.jpeg' },
   { type: 'photo', src: 'images/Memoria18.png.jpeg' },
-
   { type: 'video', src: 'images/Memoria19.mp4' }
 ];
 
 function shuffle(arr) {
   const a = [...arr];
+
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]];
   }
+
   return a;
 }
 
 const grid = document.getElementById('memoriasGrid');
 const shuffled = shuffle(medias);
 
-shuffled.forEach((item, index) => {
+shuffled.forEach((item) => {
   const cell = document.createElement('div');
   cell.className = 'memoria-item';
 
@@ -143,12 +127,14 @@ shuffled.forEach((item, index) => {
     cell.appendChild(img);
   } else {
     const video = document.createElement('video');
+
     video.src = item.src;
     video.muted = true;
     video.loop = true;
     video.playsInline = true;
 
     cell.addEventListener('mouseenter', () => video.play());
+
     cell.addEventListener('mouseleave', () => {
       video.pause();
       video.currentTime = 0;
@@ -166,8 +152,6 @@ shuffled.forEach((item, index) => {
   grid.appendChild(cell);
 });
 
-// ─── Lightbox ───────────────────────────────────────────────────────────────
-
 const lightbox = document.getElementById('lightbox');
 const lightboxContent = document.getElementById('lightboxContent');
 const lightboxClose = document.getElementById('lightboxClose');
@@ -181,9 +165,11 @@ function openLightbox(item) {
     lightboxContent.appendChild(img);
   } else {
     const video = document.createElement('video');
+
     video.src = item.src;
     video.controls = true;
     video.autoplay = true;
+
     lightboxContent.appendChild(video);
   }
 
@@ -200,18 +186,21 @@ function closeLightbox() {
 lightboxClose.addEventListener('click', closeLightbox);
 
 lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) closeLightbox();
+  if (e.target === lightbox) {
+    closeLightbox();
+  }
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'Escape') {
+    closeLightbox();
+  }
 });
-
-// ─── Smooth Scroll ───────────────────────────────────────────────────────────
 
 function smoothScrollTo(targetY, duration = 1000) {
   const startY = window.scrollY;
   const distance = targetY - startY;
+
   let startTime = null;
 
   function ease(t) {
@@ -221,14 +210,18 @@ function smoothScrollTo(targetY, duration = 1000) {
   }
 
   function animation(currentTime) {
-    if (!startTime) startTime = currentTime;
+    if (!startTime) {
+      startTime = currentTime;
+    }
 
     const progress = Math.min((currentTime - startTime) / duration, 1);
     const eased = ease(progress);
 
     window.scrollTo(0, startY + distance * eased);
 
-    if (progress < 1) requestAnimationFrame(animation);
+    if (progress < 1) {
+      requestAnimationFrame(animation);
+    }
   }
 
   requestAnimationFrame(animation);
@@ -245,14 +238,10 @@ document.querySelectorAll('.navbar a').forEach(link => {
   });
 });
 
-// ─── Navbar scroll ─────────────────────
-
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
-
-// ─── Fade-in ─────────────────────
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -266,8 +255,6 @@ document.querySelectorAll('section').forEach(sec => {
   sec.classList.add('fade-in');
   observer.observe(sec);
 });
-
-// ─── REMOVIDO efeito 3D e substituído por hover elegante ─────────────────────
 
 const hexes = document.querySelectorAll('.hex');
 

@@ -103,7 +103,7 @@ body {
   }
 }
 
-/* ─── Galeria de momentos ──────────────────────────────────────────────────── */
+
 
 .galeria {
   position: relative;
@@ -168,7 +168,7 @@ body {
   left: 240px;
 }
 
-/* ─── Flip cards ───────────────────────────────────────────────────────────── */
+
 
 .flip-card {
   position: absolute;
@@ -271,7 +271,7 @@ body {
   display: block;
 }
 
-/* ─── Máquina do tempo ─────────────────────────────────────────────────────── */
+
 
 .infos {
   display: flex;
@@ -351,7 +351,7 @@ body {
   padding: 2px 0;
 }
 
-/* ─── Carta & Motivos ──────────────────────────────────────────────────────── */
+
 
 .motivos-section {
   padding: 80px 10%;
@@ -400,7 +400,7 @@ body {
   margin-top: 20px;
 }
 
-/* ─── Seção Memórias ───────────────────────────────────────────────────────── */
+
 
 .memorias-section {
   padding: 80px 5%;
@@ -423,7 +423,7 @@ body {
   gap: 8px;
 }
 
-/* Item da galeria */
+
 .memoria-item {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -449,7 +449,7 @@ body {
   filter: brightness(1.1);
 }
 
-/* Overlay rosado ao hover */
+
 .memoria-item::after {
   content: '';
   position: absolute;
@@ -465,7 +465,7 @@ body {
   opacity: 1;
 }
 
-/* Ícone de play para vídeos */
+
 .play-icon {
   position: absolute;
   bottom: 10px;
@@ -484,7 +484,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* ─── Lightbox ─────────────────────────────────────────────────────────────── */
+
 
 .lightbox {
   position: fixed;
@@ -563,13 +563,13 @@ body {
   transform: scale(1.1);
 }
 
-/* ─── Footer ───────────────────────────────────────────────────────────────── */
+
 
 footer {
   padding: 30px;
 }
 
-/* ─── Responsivo ───────────────────────────────────────────────────────────── */
+
 
 @media (max-width: 900px) {
   .galeria {
@@ -618,13 +618,13 @@ footer {
   }
 }
 
-/* ─── Cursor personalizado ───────────────────────── */
+
 
 body {
   cursor: url('images/cursor.cur'), auto;
 }
 
-/* ─── Scroll indicator ───────────────────────── */
+
 
 .scroll-indicator {
   position: absolute;
@@ -653,7 +653,7 @@ body {
   }
 }
 
-/* ─── Parallax ───────────────────────── */
+
 
 .parallax-bg {
   position: fixed;
@@ -671,7 +671,7 @@ body {
   background-attachment: fixed;
 }
 
-/* ─── Fade-in ───────────────────────── */
+
 
 .fade-in {
   opacity: 0;
@@ -684,14 +684,14 @@ body {
   transform: translateY(0);
 }
 
-/* ─── Navbar scroll effect ───────────────────────── */
+
 
 .navbar.scrolled {
   background: rgba(20, 0, 25, 0.85);
   box-shadow: 0 0 20px rgba(255, 100, 180, 0.2);
 }
 
-/* ─── Glow hover extra ───────────────────────── */
+
 
 .flip-card:hover {
   box-shadow: 0 0 25px rgba(255, 100, 180, 0.4);
@@ -707,7 +707,7 @@ a, button, .hex, .flip-card {
   cursor: url('images/pointer.png'), pointer;
 }
 
-/* ─── Cursor magnético ───────────────────────── */
+
 
 a {
   transition: transform 0.2s ease;
@@ -718,7 +718,7 @@ a {
   transform: scale(1.15);
 }
 
-/* ─── Navbar hover melhorado ───────────────────────── */
+
 
 .navbar a {
   color: #ffd6f5;
@@ -733,7 +733,7 @@ a {
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
-/* ─── Underline animado ───────────────────────── */
+
 
 .navbar a {
   position: relative;
@@ -756,7 +756,7 @@ a {
   width: 100%;
 }
 
-/* ─── Link ativo ───────────────────────── */
+
 
 .navbar a.active {
   color: #ffffff;
@@ -766,7 +766,7 @@ a {
   width: 100%;
 }
 
-/* ─── Scroll snap ───────────────────────── */
+
 
 html {
   scroll-snap-type: y proximity;
@@ -776,7 +776,7 @@ section {
   scroll-snap-align: start;
 }
 
-/* ─── Honeycomb 3D ───────────────────────── */
+
 
 .honeycomb {
   transform-style: preserve-3d;
