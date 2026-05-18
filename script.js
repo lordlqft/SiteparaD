@@ -55,7 +55,7 @@ function calcularTempo(dataInicial) {
 }
 
 const primeiraVista = new Date("2024-08-14T00:00:00");
-const namoro = new Date("2025-06-18T00:00:00");
+const namoro = new Date("2024-06-18T00:00:00");
 
 function atualizar() {
   document.getElementById("data1").innerHTML = calcularTempo(primeiraVista);
@@ -102,6 +102,15 @@ const medias = [
   { type: 'video', src: 'images/Memoria19.mp4' }
 ];
 
+const calls = [];
+
+for (let i = 1; i <= 30; i++) {
+  calls.push({
+    type: 'photo',
+    src: `images/call${i}.png`
+  });
+}
+
 function shuffle(arr) {
   const a = [...arr];
 
@@ -122,8 +131,10 @@ shuffled.forEach((item) => {
 
   if (item.type === 'photo') {
     const img = document.createElement('img');
+
     img.src = item.src;
     img.loading = 'lazy';
+
     cell.appendChild(img);
   } else {
     const video = document.createElement('video');
@@ -149,7 +160,26 @@ shuffled.forEach((item) => {
   }
 
   cell.addEventListener('click', () => openLightbox(item));
+
   grid.appendChild(cell);
+});
+
+const callsGrid = document.getElementById('callsGrid');
+
+calls.forEach((item) => {
+  const cell = document.createElement('div');
+  cell.className = 'memoria-item';
+
+  const img = document.createElement('img');
+
+  img.src = item.src;
+  img.loading = 'lazy';
+
+  cell.appendChild(img);
+
+  cell.addEventListener('click', () => openLightbox(item));
+
+  callsGrid.appendChild(cell);
 });
 
 const lightbox = document.getElementById('lightbox');
@@ -161,7 +191,9 @@ function openLightbox(item) {
 
   if (item.type === 'photo') {
     const img = document.createElement('img');
+
     img.src = item.src;
+
     lightboxContent.appendChild(img);
   } else {
     const video = document.createElement('video');
@@ -240,6 +272,7 @@ document.querySelectorAll('.navbar a').forEach(link => {
 
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
+
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 

@@ -812,3 +812,24 @@ section {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 100, 180, 0.7);
 }
+
+.calls-section {
+  padding: 80px 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.calls-subtitulo {
+  color: #ffc2ee;
+  font-size: 1em;
+  margin-top: -10px;
+  margin-bottom: 36px;
+  opacity: 0.75;
+  font-family: cursive;
+}
+
+.calls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+}
