@@ -114,7 +114,7 @@ const medias = [
 
 const calls = [];
 
-for (let i = 1; i <= 30; i++) {
+for (let i = 1; i <= 43; i++) {
   calls.push({
     type: 'photo',
     src: `images/call${i}.png`
@@ -143,7 +143,7 @@ shuffled.forEach((item) => {
     const img = document.createElement('img');
 
     img.src = item.src;
-    img.loading = 'lazy';
+    img.loading = 'eager';
 
     cell.appendChild(img);
   } else {
