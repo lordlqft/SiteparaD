@@ -82,34 +82,59 @@ document.querySelectorAll('.flip-card').forEach(card => {
 });
 
 const medias = [
-  { type: 'photo', src: 'images/memoria1.png' },
-  { type: 'photo', src: 'images/memoria2.png' },
-  { type: 'photo', src: 'images/memoria3.png' },
+  { type: 'photo', src: 'images/memoria1.jpeg' },
+  { type: 'photo', src: 'images/memoria2.jpeg' },
+  { type: 'photo', src: 'images/memoria3.jpeg' },
+
   { type: 'photo', src: 'images/memoria4.png' },
   { type: 'photo', src: 'images/memoria5.png' },
 
-  { type: 'video', src: 'images/memoria6.mp4' },
+  { type: 'photo', src: 'images/memoria6.jpg' },
+  { type: 'photo', src: 'images/memoria7.jpg' },
+  { type: 'photo', src: 'images/memoria8.jpg' },
+  { type: 'photo', src: 'images/memoria9.jpg' },
+  { type: 'photo', src: 'images/memoria10.jpg' },
 
-  { type: 'photo', src: 'images/memoria7.png' },
-  { type: 'photo', src: 'images/memoria8.png' },
-  { type: 'photo', src: 'images/memoria9.png' },
-  { type: 'photo', src: 'images/memoria10.png' },
-  { type: 'photo', src: 'images/memoria11.png' },
+  { type: 'video', src: 'images/memoria11.mov' },
 
-  { type: 'video', src: 'images/memoria12.mp4' },
-  { type: 'video', src: 'images/memoria13.mp4' },
-  { type: 'video', src: 'images/memoria14.mp4' },
+  { type: 'photo', src: 'images/memoria12.jpg' },
+  { type: 'photo', src: 'images/memoria13.jpg' },
+  { type: 'photo', src: 'images/memoria14.jpg' },
+  { type: 'photo', src: 'images/memoria15.jpg' },
+  { type: 'photo', src: 'images/memoria16.jpg' },
+  { type: 'photo', src: 'images/memoria17.jpg' },
 
-  { type: 'photo', src: 'images/memoria15.png' },
-  { type: 'photo', src: 'images/memoria16.png' },
-  { type: 'photo', src: 'images/memoria17.png' },
+  { type: 'video', src: 'images/memoria18.mov' },
 
-  { type: 'video', src: 'images/memoria18.mp4' },
+  { type: 'photo', src: 'images/memoria19.jpg' },
+  { type: 'photo', src: 'images/memoria20.jpg' },
 
-  { type: 'photo', src: 'images/memoria19.png' },
-  { type: 'photo', src: 'images/memoria20.png' },
-  { type: 'photo', src: 'images/memoria21.png' },
-  { type: 'photo', src: 'images/memoria22.png' }
+  { type: 'video', src: 'images/memoria21.mov' },
+
+  { type: 'photo', src: 'images/memoria22.jpg' },
+  { type: 'photo', src: 'images/memoria23.jpg' },
+  { type: 'photo', src: 'images/memoria24.jpg' },
+  { type: 'photo', src: 'images/memoria25.jpg' },
+  { type: 'photo', src: 'images/memoria26.jpg' },
+  { type: 'photo', src: 'images/memoria27.jpg' },
+
+  { type: 'video', src: 'images/memoria28.mov' },
+
+  { type: 'photo', src: 'images/memoria29.jpg' },
+  { type: 'photo', src: 'images/memoria30.jpg' },
+  { type: 'photo', src: 'images/memoria31.jpg' },
+
+  { type: 'video', src: 'images/memoria32.mov' },
+  { type: 'video', src: 'images/memoria33.mov' },
+
+  { type: 'photo', src: 'images/memoria34.jpg' },
+  { type: 'photo', src: 'images/memoria35.jpg' },
+  { type: 'photo', src: 'images/memoria36.jpg' },
+  { type: 'photo', src: 'images/memoria37.jpg' },
+
+  { type: 'video', src: 'images/memoria38.mov' },
+
+  { type: 'photo', src: 'images/memoria39.jpg' }
 ];
 
 const calls = [];
