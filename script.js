@@ -88,21 +88,26 @@ const medias = [
   { type: 'photo', src: 'images/memoria4.png' },
   { type: 'photo', src: 'images/memoria5.png' },
   { type: 'video', src: 'images/memoria6.mp4' },
+
   { type: 'photo', src: 'images/memoria8.png' },
   { type: 'photo', src: 'images/memoria9.png' },
   { type: 'photo', src: 'images/memoria10.png' },
   { type: 'photo', src: 'images/memoria11.png' },
   { type: 'photo', src: 'images/memoria12.png' },
+
   { type: 'video', src: 'images/memoria13.mp4' },
   { type: 'video', src: 'images/memoria14.mp4' },
   { type: 'video', src: 'images/memoria15.mp4' },
+
   { type: 'photo', src: 'images/memoria16.png' },
   { type: 'photo', src: 'images/memoria17.png' },
   { type: 'photo', src: 'images/memoria18.png' },
+
   { type: 'video', src: 'images/memoria19.mp4' },
+
   { type: 'photo', src: 'images/memoria20.png' },
   { type: 'photo', src: 'images/memoria21.png' },
-  { type: 'photo', src: 'images/memoria22.png' },
+
   { type: 'photo', src: 'images/memoria23.png' },
   { type: 'photo', src: 'images/memoria24.png' }
 ];
