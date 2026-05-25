@@ -145,6 +145,14 @@ shuffled.forEach((item) => {
     img.src = item.src;
     img.loading = 'eager';
 
+    img.onerror = () => {
+      console.error(`ERRO AO CARREGAR: ${item.src}`);
+    };
+
+    img.onload = () => {
+      console.log(`OK: ${item.src}`);
+    };
+
     cell.appendChild(img);
   } else {
     const video = document.createElement('video');
